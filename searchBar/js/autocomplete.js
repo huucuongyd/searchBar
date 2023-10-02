@@ -112,6 +112,3 @@ function updateResults(newResults) {
         });
     }else resultSuggest.style.display = "none";
 }
-
-
-
