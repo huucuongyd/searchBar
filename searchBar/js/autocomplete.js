@@ -22,7 +22,7 @@ newDiv.addEventListener("click", function(event) {
 
 option.id = "optionSelected";
 const optionContent = ["TẤT CẢ","ẢNH","VIDEO","TIN TỨC"];
-let selectedOptionIndex = 2;
+let selectedOptionIndex = 0;
 let typeSearch;
 
 function setTypeSearch(key){
