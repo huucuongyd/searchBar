@@ -220,7 +220,7 @@ function updateResults(newResults) {
 
             divElement.appendChild(divTextContent);
             divElement.addEventListener("click",function(){
-                window.open(`https://weoja.com/search?q=${el.query}${typeSearch ? typeSearch : ''}`, '_blank');
+                window.open(`https://weoja.com/search?q=${checkbox.checked ? 'site:' + siteSearchSpecial + "+":''}${el.query}${typeSearch ? typeSearch : ''}`, '_blank');
             });
             resultSuggest.appendChild(divElement);
 
