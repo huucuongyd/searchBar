@@ -113,6 +113,12 @@ iconInputSiteSearch.src = 'https://raw.githubusercontent.com/huucuongyd/searchBa
 
 divInputSearch.appendChild(divInputSearchPlus);
 
+if (window.hasOwnProperty('siteSearchSpecial')) {
+    console.log('Biến đã được khai báo:', siteSearchSpecial);
+  } else {
+    var siteSearchSpecial = '';
+  }
+
 var divSelectSearchInSpecialSite = document.createElement('div');
 divSelectSearchInSpecialSite.className = 'divSelectSearchInSpecialSite';
 divSelectSearchInSpecialSite.style.display = siteSearchSpecial? 'block':'none'

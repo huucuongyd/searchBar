@@ -26,7 +26,7 @@
 }
 @media (min-width:650px){
     #divSearch{
-        top: 100px;
+        top: 10%;
         left: 50%;
         transform: translateX(-50%);
         width: 650px;
@@ -46,7 +46,7 @@
 }
 @media (max-width:650px){
     #divSearch{
-        margin-top: 100px;
+        margin-top: 10%;
         width: 100%;
         box-sizing: border-box;
         border-radius: 8px;
