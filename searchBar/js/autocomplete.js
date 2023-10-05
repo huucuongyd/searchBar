@@ -113,20 +113,19 @@ iconInputSiteSearch.src = 'https://raw.githubusercontent.com/huucuongyd/searchBa
 
 divInputSearch.appendChild(divInputSearchPlus);
 
-if (window.hasOwnProperty('siteSearchSpecial')) {
-    console.log('Biến đã được khai báo:', siteSearchSpecial);
-  } else {
+if (!window.hasOwnProperty('siteSearchSpecial')) {
     var siteSearchSpecial = '';
-  }
+}
 
 var divSelectSearchInSpecialSite = document.createElement('div');
 divSelectSearchInSpecialSite.className = 'divSelectSearchInSpecialSite';
-divSelectSearchInSpecialSite.style.display = siteSearchSpecial? 'block':'none'
-divSelectSearchInSpecialSite.textContent = `Search results from all domain`;
+divSelectSearchInSpecialSite.style.display = siteSearchSpecial? 'block':'none';
+divSelectSearchInSpecialSite.textContent = `Search results from ${siteSearchSpecial} only`;
 var labelSwitchButton = document.createElement('label');
 labelSwitchButton.className = 'switch';
 var inputLabelSwitchButton = document.createElement('input');
 inputLabelSwitchButton.type = 'checkbox';
+inputLabelSwitchButton.checked = true;
 var spanLabelSwitchButton = document.createElement('span');
 spanLabelSwitchButton.className = 'slider round'
 
