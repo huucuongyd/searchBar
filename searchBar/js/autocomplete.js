@@ -75,8 +75,8 @@ for (var i = 0; i < optionContent.length; i++) {
         let selectedIndex = optionContent.indexOf(event.target.textContent);
         for (var j = 0; j < optionContent.length; j++) {
             if(selectedIndex === j){
-                option.children[j].classList.add("selected")
-            }else option.children[j].classList.remove("selected");
+                option.children[j].classList.add("selected0510")
+            }else option.children[j].classList.remove("selected0510");
         }
         selectedOptionIndex = selectedIndex;
         setTypeSearch(selectedOptionIndex);
