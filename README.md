@@ -2,7 +2,7 @@ Add below to project.
 
 Style:
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/search-bar-weoja@1.0.12/searchBar/css/autocomplete.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/search-bar-weoja@1.0.13/searchBar/css/autocomplete.css">
 
 Update font-family:
 
@@ -12,7 +12,7 @@ Update font-family:
 Script:
 
     <script>siteSearchSpecial = 'weoja.com'</script>
-    <script src="https://cdn.jsdelivr.net/npm/search-bar-weoja/searchBar@1.0.12/js/autocomplete.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/search-bar-weoja/searchBar@1.0.13/js/autocomplete.js"></script>
 
 <b>siteSearchSpecial variable declaration is required</b>
 <b>If you don't have special site to search, let leave it blank</b>

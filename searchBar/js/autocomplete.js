@@ -2,17 +2,17 @@ var newDiv = document.getElementById("divBackground");
 var divSearch = document.createElement("div");
 var option = document.createElement("div");
 var divInputSearch = document.createElement("div");
-divInputSearch.id = "divInputSearch";
+divInputSearch.id = "divInputSearch0510";
 var divInputSearchPlus = document.createElement("div");
-divInputSearchPlus.className = 'divInputSearchPlus';
+divInputSearchPlus.className = 'divInputSearchPlus0510';
 var inputSearch = document.createElement("input");
-inputSearch.className = 'inputSearch';
+inputSearch.className = 'inputSearch0510';
 var resultSuggest = document.createElement("div");
 
 inputSearch.autofocus = true;
 inputSearch.placeholder = 'Type anything...';
 
-divSearch.id = "divSearch";
+divSearch.id = "divSearch0510";
 newDiv.appendChild(divSearch)
 
 searchBar.addEventListener("click", function() {
@@ -27,7 +27,7 @@ newDiv.addEventListener("click", function(event) {
     }
 });
 
-option.id = "optionSelected";
+option.id = "optionSelected0510";
 const optionContent = ["All","Images","News","Videos"];
 const urlImage = ['https://raw.githubusercontent.com/huucuongyd/searchBar/main/searchBar/assets/All.svg','https://raw.githubusercontent.com/huucuongyd/searchBar/main/searchBar/assets/Images.svg','https://raw.githubusercontent.com/huucuongyd/searchBar/main/searchBar/assets/News.svg','https://raw.githubusercontent.com/huucuongyd/searchBar/main/searchBar/assets/Videos.svg']
 let selectedOptionIndex = 0;
@@ -35,7 +35,7 @@ let typeSearch;
 
 var titleTyping = document.createElement('div');
 titleTyping.textContent = `Search for "${optionContent[0]}"`;
-titleTyping.className = "titleTyping"
+titleTyping.className = "titleTyping0510"
 
 function setTypeSearch(key){
     titleTyping.textContent = `Search for "${optionContent[key]}"`;
@@ -57,14 +57,14 @@ function setTypeSearch(key){
 
 for (var i = 0; i < optionContent.length; i++) {
     var divSellect = document.createElement('div');
-    divSellect.className = 'divSellect';
+    divSellect.className = 'divSellect0510';
     var span = document.createElement("span");
     span.textContent = optionContent[i];
 
     var iconButton = document.createElement('img')
     iconButton.src = urlImage[i]
     if (i === selectedOptionIndex){
-        divSellect.classList.add("selected");
+        divSellect.classList.add("selected0510");
     }
 
     var iconArrow = document.createElement('img');
@@ -118,16 +118,16 @@ if (!window.hasOwnProperty('siteSearchSpecial')) {
 }
 
 var divSelectSearchInSpecialSite = document.createElement('div');
-divSelectSearchInSpecialSite.className = 'divSelectSearchInSpecialSite';
+divSelectSearchInSpecialSite.className = 'divSelectSearchInSpecialSite0510';
 divSelectSearchInSpecialSite.style.display = siteSearchSpecial? 'block':'none';
 divSelectSearchInSpecialSite.textContent = `Search results from ${siteSearchSpecial} only`;
 var labelSwitchButton = document.createElement('label');
-labelSwitchButton.className = 'switch';
+labelSwitchButton.className = 'switch0510';
 var inputLabelSwitchButton = document.createElement('input');
 inputLabelSwitchButton.type = 'checkbox';
 inputLabelSwitchButton.checked = true;
 var spanLabelSwitchButton = document.createElement('span');
-spanLabelSwitchButton.className = 'slider round'
+spanLabelSwitchButton.className = 'slider0510 round'
 
 labelSwitchButton.appendChild(inputLabelSwitchButton);
 labelSwitchButton.appendChild(spanLabelSwitchButton);
@@ -144,7 +144,7 @@ divInputSearch.appendChild(divBorderLabelSwitchButton);
 
 divSearch.appendChild(divInputSearch);
 
-var checkbox = document.querySelector('.switch input');
+var checkbox = document.querySelector('.switch0510 input');
 
 checkbox.addEventListener('change', function() {
     if (checkbox.checked) {
@@ -165,14 +165,14 @@ divSearch.appendChild(titleResultSuggest);
 divSearch.appendChild(resultSuggest)
 
 var divider = document.createElement('div');
-divider.className = "divider";
+divider.className = "divider0510";
 
 divSearch.appendChild(divider);
 divSearch.appendChild(titleTyping);
 
 divSearch.appendChild(option);
 
-resultSuggest.className = 'resultSuggest';
+resultSuggest.className = 'resultSuggest0510';
 
 resultSuggest.style.display = "none";
 
@@ -214,13 +214,13 @@ function updateResults(newResults) {
         titleResultSuggest.style.display = "block";
         newResults.forEach((el) => {
             const divElement = document.createElement('div');
-            divElement.classList = "suggestChild";
+            divElement.classList = "suggestChild0510";
             const imgSearchIcon = document.createElement('img');
             imgSearchIcon.src = 'https://raw.githubusercontent.com/huucuongyd/searchBar/main/searchBar/assets/icon.svg';
             divElement.appendChild(imgSearchIcon);
 
             const divTextContent = document.createElement('div');
-            divTextContent.className = 'divTextContent';
+            divTextContent.className = 'divTextContent0510';
             divTextContent.textContent = el.query;
 
             divElement.appendChild(divTextContent);
