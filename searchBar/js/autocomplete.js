@@ -9,48 +9,8 @@ var inputSearch = document.createElement("input");
 inputSearch.className = 'inputSearch';
 var resultSuggest = document.createElement("div");
 
-const radioOptionsValue = ['Many Sources','One Sources'];
-var radioOptions = document.createElement('div');
-radioOptions.className = 'radioOptions';
-
-let radioSelectedIndex = 0;
-
-for(var i = 0; i < radioOptionsValue.length; i++){
-    var radioOptionsSelected = document.createElement('div');
-    radioOptionsSelected.className = 'radioOptionsSelected';
-    var divBorder = document.createElement('div');
-    divBorder.className = 'divBorder';
-    var radioOptionsSelectedDiv = document.createElement('div');
-    radioOptionsSelectedDiv.textContent = radioOptionsValue[i];
-    radioOptionsSelectedDiv.className = 'radioOptionsSelectedDiv';
-    var radioOptionsSelectedDivider = document.createElement('div');
-    radioOptionsSelectedDivider.className = 'radioOptionsSelectedDivider';
-
-    if(i === radioSelectedIndex){
-        radioOptionsSelected.classList.add("selectedRadio");
-    }
-
-    divBorder.addEventListener("click", function(event) {
-        let selectedIndexRadio = radioOptionsValue.indexOf(event.target.textContent);
-        for (var j = 0; j < radioOptionsValue.length; j++) {
-            if(selectedIndexRadio === j){
-                radioOptions.children[j].classList.add("selectedRadio");
-            }else radioOptions.children[j].classList.remove("selectedRadio");
-        }
-        radioSelectedIndex = selectedIndexRadio;
-        setTypeRadio(radioSelectedIndex);
-    })
-
-    divBorder.appendChild(radioOptionsSelectedDiv);
-    divBorder.appendChild(radioOptionsSelectedDivider);
-    radioOptionsSelected.appendChild(divBorder);
-    radioOptions.appendChild(radioOptionsSelected);
-}
-
-divSearch.appendChild(radioOptions);
-
 inputSearch.autofocus = true;
-inputSearch.placeholder = "Typing...";
+inputSearch.placeholder = 'Type anything...';
 
 divSearch.id = "divSearch";
 newDiv.appendChild(divSearch)
@@ -148,49 +108,44 @@ inputSearch.addEventListener('blur', () => {
 
 divInputSearchPlus.appendChild(iconX);
 
-var divInputSiteSearch = document.createElement('div');
-divInputSiteSearch.className = 'divInputSiteSearch';
-divInputSiteSearch.style.display = 'none';
-
-var inputSiteSearch = document.createElement('input');
-inputSiteSearch.className = 'inputSiteSearch';
-
-function setTypeRadio(key){
-    switch (key) {
-        case 1:
-            divInputSiteSearch.style.display = 'flex';
-            break;
-        default:
-            divInputSiteSearch.style.display = 'none';
-            inputSiteSearch.value = '';
-            break;
-    }
-}
-
 var iconInputSiteSearch = document.createElement('img');
 iconInputSiteSearch.src = 'https://raw.githubusercontent.com/huucuongyd/searchBar/main/searchBar/assets/site.svg'
 
-var divBorderSiteSearch = document.createElement('div');
-divBorderSiteSearch.className = 'divBorderSiteSearch';
-
-divBorderSiteSearch.appendChild(iconInputSiteSearch);
-divBorderSiteSearch.appendChild(inputSiteSearch);
-
-divInputSiteSearch.appendChild(divBorderSiteSearch);
-
 divInputSearch.appendChild(divInputSearchPlus);
 
-divInputSearch.appendChild(divInputSiteSearch);
+var divSelectSearchInSpecialSite = document.createElement('div');
+divSelectSearchInSpecialSite.className = 'divSelectSearchInSpecialSite';
+divSelectSearchInSpecialSite.textContent = `Search results from all domain`;
+var labelSwitchButton = document.createElement('label');
+labelSwitchButton.className = 'switch';
+var inputLabelSwitchButton = document.createElement('input');
+inputLabelSwitchButton.type = 'checkbox';
+var spanLabelSwitchButton = document.createElement('span');
+spanLabelSwitchButton.className = 'slider round'
+
+labelSwitchButton.appendChild(inputLabelSwitchButton);
+labelSwitchButton.appendChild(spanLabelSwitchButton);
+
+divInputSearch.appendChild(divSelectSearchInSpecialSite);
+
+var divBorderLabelSwitchButton = document.createElement('div');
+divBorderLabelSwitchButton.className = 'divBorderLabelSwitchButton';
+
+divBorderLabelSwitchButton.appendChild(labelSwitchButton);
+
+divInputSearch.appendChild(divBorderLabelSwitchButton);
 
 divSearch.appendChild(divInputSearch);
 
-inputSiteSearch.addEventListener('focus', () => {
-    divInputSiteSearch.classList.add('focused');
-});
-  
-inputSiteSearch.addEventListener('blur', () => {
-    divInputSiteSearch.classList.remove('focused');
-});
+var checkbox = document.querySelector('.switch input');
+
+checkbox.addEventListener('change', function() {
+    if (checkbox.checked) {
+        divSelectSearchInSpecialSite.textContent = `Search results from ${siteSearchSpecial} only`;
+    } else {
+        divSelectSearchInSpecialSite.textContent = `Search results from all domain`;
+    }
+  });
 
 var titleResultSuggest = document.createElement("div");
 titleResultSuggest.className = "titleResultSuggest"
@@ -238,14 +193,9 @@ inputSearch.addEventListener("input", function() {
 });
 inputSearch.addEventListener("keydown", function(event){
     if(event.key === 'Enter' && inputSearch.value !== ''){
-        window.open(`https://weoja.com/search?q=${inputSiteSearch.value ? 'site:'+inputSiteSearch.value+'+' : ''}${inputSearch.value}${typeSearch ? typeSearch : ''}`, '_blank');
+        window.open(`https://weoja.com/search?q=${checkbox.checked ? 'site:' + siteSearchSpecial + "+":''}${inputSearch.value}${typeSearch ? typeSearch : ''}`, '_blank');
     }
 });
-inputSiteSearch.addEventListener('keydown',function(event){
-    if(event.key === 'Enter' && inputSearch.value !== '' && inputSiteSearch.value !== ''){
-        window.open(`https://weoja.com/search?q=${inputSiteSearch.value ? 'site:'+inputSiteSearch.value+'+' : ''}${inputSearch.value}${typeSearch ? typeSearch : ''}`, '_blank');
-    }
-})
 
 function updateResults(newResults) {
     while (resultSuggest.firstChild) {
