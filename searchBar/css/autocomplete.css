@@ -199,6 +199,9 @@
 #divInputSearch .divInputSearchPlus:focus-within{
     border: 3px solid #E2DFFF ;
 }
+#divInputSearch .divInputSiteSearch:focus-within{
+    border: 3px solid #E2DFFF ;
+}
 .resultSuggest{
     padding: 16px;
     display: flex;

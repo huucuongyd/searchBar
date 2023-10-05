@@ -184,6 +184,14 @@ divInputSearch.appendChild(divInputSiteSearch);
 
 divSearch.appendChild(divInputSearch);
 
+inputSiteSearch.addEventListener('focus', () => {
+    divInputSiteSearch.classList.add('focused');
+});
+  
+inputSiteSearch.addEventListener('blur', () => {
+    divInputSiteSearch.classList.remove('focused');
+});
+
 var titleResultSuggest = document.createElement("div");
 titleResultSuggest.className = "titleResultSuggest"
 titleResultSuggest.textContent = "RECENTS SEARCHES";
