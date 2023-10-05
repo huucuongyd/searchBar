@@ -115,6 +115,7 @@ divInputSearch.appendChild(divInputSearchPlus);
 
 var divSelectSearchInSpecialSite = document.createElement('div');
 divSelectSearchInSpecialSite.className = 'divSelectSearchInSpecialSite';
+divSelectSearchInSpecialSite.style.display = siteSearchSpecial? 'block':'none'
 divSelectSearchInSpecialSite.textContent = `Search results from all domain`;
 var labelSwitchButton = document.createElement('label');
 labelSwitchButton.className = 'switch';
@@ -129,6 +130,7 @@ labelSwitchButton.appendChild(spanLabelSwitchButton);
 divInputSearch.appendChild(divSelectSearchInSpecialSite);
 
 var divBorderLabelSwitchButton = document.createElement('div');
+divBorderLabelSwitchButton.style.display = siteSearchSpecial ? 'block' : 'none'
 divBorderLabelSwitchButton.className = 'divBorderLabelSwitchButton';
 
 divBorderLabelSwitchButton.appendChild(labelSwitchButton);
