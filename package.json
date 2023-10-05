@@ -1,6 +1,6 @@
 {
   "name": "search-bar-weoja",
-  "version": "1.0.14",
+  "version": "1.0.16",
   "description": "search bar for embed to html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

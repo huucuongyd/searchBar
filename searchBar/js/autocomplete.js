@@ -200,7 +200,7 @@ inputSearch.addEventListener("input", function() {
 });
 inputSearch.addEventListener("keydown", function(event){
     if(event.key === 'Enter' && inputSearch.value !== ''){
-        window.open(`https://weoja.com/search?q=${checkbox.checked ? 'site:' + siteSearchSpecial + "+":''}${inputSearch.value}${typeSearch ? typeSearch : ''}`, '_blank');
+        window.open(`https://weoja.com/search?q=${inputSearch.value}${checkbox.checked ? ' site:' + siteSearchSpecial:''}${typeSearch ? typeSearch : ''}`, '_blank');
     }
 });
 
@@ -225,7 +225,7 @@ function updateResults(newResults) {
 
             divElement.appendChild(divTextContent);
             divElement.addEventListener("click",function(){
-                window.open(`https://weoja.com/search?q=${checkbox.checked ? 'site:' + siteSearchSpecial + "+":''}${el.query}${typeSearch ? typeSearch : ''}`, '_blank');
+                window.open(`https://weoja.com/search?q=${inputSearch.value}${checkbox.checked ? ' site:' + siteSearchSpecial:''}${typeSearch ? typeSearch : ''}`, '_blank');
             });
             resultSuggest.appendChild(divElement);
 
