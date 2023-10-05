@@ -6,7 +6,49 @@ divInputSearch.id = "divInputSearch";
 var divInputSearchPlus = document.createElement("div");
 divInputSearchPlus.className = 'divInputSearchPlus';
 var inputSearch = document.createElement("input");
+inputSearch.className = 'inputSearch';
 var resultSuggest = document.createElement("div");
+
+const radioOptionsValue = ['Many Sources','One Sources'];
+var radioOptions = document.createElement('div');
+radioOptions.className = 'radioOptions';
+
+let radioSelectedIndex = 0;
+
+for(var i = 0; i < radioOptionsValue.length; i++){
+    var radioOptionsSelected = document.createElement('div');
+    radioOptionsSelected.className = 'radioOptionsSelected';
+    var divBorder = document.createElement('div');
+    divBorder.className = 'divBorder';
+    var radioOptionsSelectedDiv = document.createElement('div');
+    radioOptionsSelectedDiv.textContent = radioOptionsValue[i];
+    radioOptionsSelectedDiv.className = 'radioOptionsSelectedDiv';
+    var radioOptionsSelectedDivider = document.createElement('div');
+    radioOptionsSelectedDivider.className = 'radioOptionsSelectedDivider';
+
+    if(i === radioSelectedIndex){
+        radioOptionsSelected.classList.add("selectedRadio");
+    }
+
+    divBorder.addEventListener("click", function(event) {
+        let selectedIndexRadio = radioOptionsValue.indexOf(event.target.textContent);
+        for (var j = 0; j < radioOptionsValue.length; j++) {
+            if(selectedIndexRadio === j){
+                radioOptions.children[j].classList.add("selectedRadio");
+            }else radioOptions.children[j].classList.remove("selectedRadio");
+        }
+        radioSelectedIndex = selectedIndexRadio;
+        setTypeRadio(radioSelectedIndex);
+    })
+
+    divBorder.appendChild(radioOptionsSelectedDiv);
+    divBorder.appendChild(radioOptionsSelectedDivider);
+    radioOptionsSelected.appendChild(divBorder);
+    radioOptions.appendChild(radioOptionsSelected);
+}
+
+divSearch.appendChild(radioOptions);
+
 inputSearch.autofocus = true;
 inputSearch.placeholder = "Typing...";
 
@@ -27,11 +69,16 @@ newDiv.addEventListener("click", function(event) {
 
 option.id = "optionSelected";
 const optionContent = ["All","Images","News","Videos"];
-const urlImage = ['/home/cuong/aaaaa/searchBar/assets/All.svg','/home/cuong/aaaaa/searchBar/assets/Images.svg','/home/cuong/aaaaa/searchBar/assets/News.svg','/home/cuong/aaaaa/searchBar/assets/Videos.svg']
+const urlImage = ['https://raw.githubusercontent.com/huucuongyd/searchBar/main/searchBar/assets/All.svg','https://raw.githubusercontent.com/huucuongyd/searchBar/main/searchBar/assets/Images.svg','https://raw.githubusercontent.com/huucuongyd/searchBar/main/searchBar/assets/News.svg','https://raw.githubusercontent.com/huucuongyd/searchBar/main/searchBar/assets/Videos.svg']
 let selectedOptionIndex = 0;
 let typeSearch;
 
+var titleTyping = document.createElement('div');
+titleTyping.textContent = `Search for "${optionContent[0]}"`;
+titleTyping.className = "titleTyping"
+
 function setTypeSearch(key){
+    titleTyping.textContent = `Search for "${optionContent[key]}"`;
     switch (key) {
         case 1:
             typeSearch = '&type=image';
@@ -48,7 +95,6 @@ function setTypeSearch(key){
     }
 }
 
-
 for (var i = 0; i < optionContent.length; i++) {
     var divSellect = document.createElement('div');
     divSellect.className = 'divSellect';
@@ -62,7 +108,7 @@ for (var i = 0; i < optionContent.length; i++) {
     }
 
     var iconArrow = document.createElement('img');
-    iconArrow.src = '/home/cuong/aaaaa/searchBar/assets/iconArrow.svg';
+    iconArrow.src = 'https://raw.githubusercontent.com/huucuongyd/searchBar/main/searchBar/assets/iconArrow.svg';
     iconArrow.className = 'iconArrow';
 
     divSellect.addEventListener("click", function(event) {
@@ -77,26 +123,64 @@ for (var i = 0; i < optionContent.length; i++) {
     })
     divSellect.appendChild(iconButton);
     divSellect.appendChild(span);
-    divSellect.appendChild(iconArrow)
     option.appendChild(divSellect);
 }
 
 var iconX = document.createElement('img')
-iconX.src = '/home/cuong/aaaaa/searchBar/assets/x.svg';
+iconX.src = 'https://raw.githubusercontent.com/huucuongyd/searchBar/main/searchBar/assets/x.svg';
 iconX.style.height = '14px';
+iconX.style.cursor = "pointer";
+
+iconX.addEventListener("click", function(){
+    inputSearch.value = "";
+    resultSuggest.style.display = "none";
+    titleResultSuggest.style.display = "none";
+})
 divInputSearchPlus.appendChild(inputSearch);
 
 inputSearch.addEventListener('focus', () => {
-    inputContainer.classList.add('focused');
+    divInputSearchPlus.classList.add('focused');
 });
   
 inputSearch.addEventListener('blur', () => {
-    inputContainer.classList.remove('focused');
+    divInputSearchPlus.classList.remove('focused');
 });
 
 divInputSearchPlus.appendChild(iconX);
 
+var divInputSiteSearch = document.createElement('div');
+divInputSiteSearch.className = 'divInputSiteSearch';
+divInputSiteSearch.style.display = 'none';
+
+var inputSiteSearch = document.createElement('input');
+inputSiteSearch.className = 'inputSiteSearch';
+
+function setTypeRadio(key){
+    switch (key) {
+        case 1:
+            divInputSiteSearch.style.display = 'flex';
+            break;
+        default:
+            divInputSiteSearch.style.display = 'none';
+            inputSiteSearch.value = '';
+            break;
+    }
+}
+
+var iconInputSiteSearch = document.createElement('img');
+iconInputSiteSearch.src = '/home/cuong/aaaaa/searchBar/assets/site.svg'
+
+var divBorderSiteSearch = document.createElement('div');
+divBorderSiteSearch.className = 'divBorderSiteSearch';
+
+divBorderSiteSearch.appendChild(iconInputSiteSearch);
+divBorderSiteSearch.appendChild(inputSiteSearch);
+
+divInputSiteSearch.appendChild(divBorderSiteSearch);
+
 divInputSearch.appendChild(divInputSearchPlus);
+
+divInputSearch.appendChild(divInputSiteSearch);
 
 divSearch.appendChild(divInputSearch);
 
@@ -109,10 +193,6 @@ divSearch.appendChild(titleResultSuggest);
 
 
 divSearch.appendChild(resultSuggest)
-
-var titleTyping = document.createElement('div');
-titleTyping.textContent = `Search for "Typing" in`;
-titleTyping.className = "titleTyping"
 
 var divider = document.createElement('div');
 divider.className = "divider";
@@ -128,7 +208,7 @@ resultSuggest.style.display = "none";
 
 inputSearch.addEventListener("input", function() {
     var inputValue = inputSearch.value;
-    if(inputValue){
+    if(inputValue !== ''){
         fetch(`https://api.weoja.com/v1/search/suggestions?q=${inputValue}&setLang=en&struct=BING`)
         .then(function (response) {
             if (!response.ok) {
@@ -147,6 +227,16 @@ inputSearch.addEventListener("input", function() {
         resultSuggest.style.display = "none";
         titleResultSuggest.style.display = "none";
     }
+});
+inputSearch.addEventListener("keydown", function(event){
+    if(event.key === 'Enter' && inputSearch.value !== ''){
+        window.open(`https://weoja.com/search?q=${inputSiteSearch.value ? 'site:'+inputSiteSearch.value+'+' : ''}${inputSearch.value}${typeSearch ? typeSearch : ''}`, '_blank');
+    }
+});
+inputSiteSearch.addEventListener('keydown',function(event){
+    if(event.key === 'Enter' && inputSearch.value !== '' && inputSiteSearch.value !== ''){
+        window.open(`https://weoja.com/search?q=${inputSiteSearch.value ? 'site:'+inputSiteSearch.value+'+' : ''}${inputSearch.value}${typeSearch ? typeSearch : ''}`, '_blank');
+    }
 })
 
 function updateResults(newResults) {
@@ -161,7 +251,7 @@ function updateResults(newResults) {
             const divElement = document.createElement('div');
             divElement.classList = "suggestChild";
             const imgSearchIcon = document.createElement('img');
-            imgSearchIcon.src = '/home/cuong/aaaaa/searchBar/assets/icon.svg';
+            imgSearchIcon.src = 'https://raw.githubusercontent.com/huucuongyd/searchBar/main/searchBar/assets/icon.svg';
             divElement.appendChild(imgSearchIcon);
 
             const divTextContent = document.createElement('div');
@@ -175,7 +265,7 @@ function updateResults(newResults) {
             resultSuggest.appendChild(divElement);
 
             const imgVectorIcon = document.createElement('img');
-            imgVectorIcon.src = '/home/cuong/aaaaa/searchBar/assets/Vector.svg';
+            imgVectorIcon.src = 'https://raw.githubusercontent.com/huucuongyd/searchBar/main/searchBar/assets/Vector.svg';
             imgVectorIcon.style.height = '10px'
             divElement.appendChild(imgVectorIcon);
         });

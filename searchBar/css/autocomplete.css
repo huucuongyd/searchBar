@@ -9,6 +9,72 @@
     border-radius: 20px;
     cursor: pointer;
 }
+.radioOptions{
+    height: 50px;
+    border-bottom: 1px solid #cecece;
+    display: flex;
+}
+.radioOptionsSelected{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+.divBorder{
+    display: flex;
+    flex-direction: column;
+}
+.radioOptionsSelectedDiv{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.selectedRadio .radioOptionsSelectedDiv {
+    color: #5552B5;
+}
+.radioOptionsSelectedDivider{
+    height: 3px;
+}
+.selectedRadio .radioOptionsSelectedDivider{
+    height: 3px;
+    background-color: #5552B5;
+    border-radius: 100px 100px 0 0;
+}
+.divInputSiteSearch{
+    height: 48px;
+    border-radius: 8px;
+    margin: 0 5px 0 5px;
+    outline: none;
+    border: 3px solid #EDEDED;
+    font-size: 18px;
+    box-sizing: border-box;
+    margin-top: 10px;
+    margin-bottom: 16px;
+}
+.divBorderSiteSearch{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    box-sizing: border-box;
+}
+.divBorderSiteSearch img{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.inputSiteSearch{
+    height: 94%;
+    width: 160px;
+    border: none;
+    outline: none;
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0.15000000596046448px;
+    text-align: left;
+}
 #divBackground{
     position: absolute;
     top: 0;
@@ -45,10 +111,15 @@
         box-sizing: border-box;
         border-radius: 8px;
         box-shadow: 0px 1px 8px 1px #00000033;
+        background-color: white;
     }
-    #optionSelected {
-        display: none;
-      }
+    #optionSelected{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        color: black;
+        text-align: center;
+        padding: 10px;
+    }
 }
 #divInputSearch{
     display: flex;
@@ -114,7 +185,7 @@
     text-align: left;
     padding: 16px;
 }
-#divSearch input{
+#divSearch .inputSearch{
     border: none;
     outline: none;
     width: 100%;
