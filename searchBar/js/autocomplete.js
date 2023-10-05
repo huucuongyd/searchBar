@@ -168,7 +168,7 @@ function setTypeRadio(key){
 }
 
 var iconInputSiteSearch = document.createElement('img');
-iconInputSiteSearch.src = '/home/cuong/aaaaa/searchBar/assets/site.svg'
+iconInputSiteSearch.src = 'https://raw.githubusercontent.com/huucuongyd/searchBar/main/searchBar/assets/site.svg'
 
 var divBorderSiteSearch = document.createElement('div');
 divBorderSiteSearch.className = 'divBorderSiteSearch';
